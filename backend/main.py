@@ -20,8 +20,8 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
+    "https://dis-integrate.vercel.app",
     "http://localhost:5173",
-    "https://YOUR-VERCEL-DOMAIN.vercel.app",
 ],
     allow_credentials=True,
     allow_methods=["*"],
