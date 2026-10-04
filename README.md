@@ -1,16 +1,91 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+# dis/integrate
 
-Currently, two official plugins are available:
+an audio experiment where you can break a sound down into its frequencies and then put it back together again.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+basically:
 
-## React Compiler
+audio → fft → frequencies → select what you want → reconstruct
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## What it does
 
-## Expanding the Oxlint configuration
+upload an audio file and dis/integrate analyzes it using an FFT.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+it finds the strongest frequencies in the audio and groups related frequencies into harmonics.
+
+you can then:
+
+- upload an audio file
+- see the frequencies detected from it
+- select harmonic groups
+- preview selected groups
+- reconstruct the audio using only the frequencies you selected
+
+the idea is basically being able to take a sound apart and see what actually makes it up.
+
+## Stack
+
+### Frontend
+- React
+- Vite
+- CSS
+- React Bits
+
+### Backend
+- Python
+- FastAPI
+- NumPy
+- Librosa
+- SciPy
+
+## How it works
+
+the audio gets sent to the FastAPI backend.
+
+the backend:
+
+1. loads the audio
+2. runs an FFT
+3. finds the strongest frequency peaks
+4. checks for related harmonics
+5. sends the frequency data back to the frontend
+
+when you select something, the selected frequencies are sent back to the backend and the audio gets reconstructed from them.
+
+## running it locally
+
+clone the repo:
+
+```bash
+git clone https://github.com/aayushkankute/dis-integrate.git
+cd dis-integrate
+install frontend dependencies:
+
+npm install
+
+start the frontend:
+
+npm run dev
+
+for the backend:
+
+cd backend
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn main:app --reload
+
+then open the local Vite URL.
+
+Why i made this
+i've been messing around with audio, FFTs and frequency analysis for a while and wanted to actually make something interactive with it instead of just looking at plots in python.
+
+so yeah this is basically me turning that into a little web app.
+
+status
+it works lol
+
+still gonna keep adding stuff to it.
+```
+
+
