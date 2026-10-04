@@ -117,7 +117,7 @@ function App() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/analyze",
+        "https://dis-integrate-backend.onrender.com/analyze",
         {
           method: "POST",
           body: formData,
@@ -176,7 +176,7 @@ function App() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/reconstruct",
+        "https://dis-integrate-backend.onrender.com/reconstruct",
         {
           method: "POST",
           body: formData,
@@ -270,7 +270,7 @@ function App() {
       );
 
       const response = await fetch(
-        "http://127.0.0.1:8000/reconstruct",
+        "https://dis-integrate-backend.onrender.com/reconstruct",
         {
           method: "POST",
           body: formData,
