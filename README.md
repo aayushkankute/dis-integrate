@@ -1,6 +1,11 @@
 
 # dis/integrate
 
+
+[**→ try dis/integrate live**](https://dis-integrate.vercel.app/)
+
+an audio experiment where you can break a sound down into its frequencies and then put it back together again.
+
 an audio experiment where you can break a sound down into its frequencies and then put it back together again.
 
 basically:
